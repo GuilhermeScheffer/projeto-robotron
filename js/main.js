@@ -1,5 +1,8 @@
 const controle = document.querySelectorAll('[data-controle]');
 const estatisticas = document.querySelectorAll('[data-estatistica]')
+var indice_imagemAtual = 0
+const elemento_imagem = document.querySelector('#imgRobotron')
+
 
 const pecas = {
     "bracos": {
@@ -35,6 +38,14 @@ const pecas = {
     }
 };
 
+const imgsRobos = [
+    'img/RobotronAmarelo.png',
+    'img/RobotronBranco.png',
+    'img/RobotronPreto.png',
+    'img/RobotronRosa.png',
+    'img/RobotronVermelho.png',
+    'img/robotron.png'
+]
 
 controle.forEach((elemento) => {
     elemento.addEventListener("click", (evento) => {
@@ -57,3 +68,12 @@ function atualizaEstatisticas(peca) {
         elemento.textContent = parseInt(elemento.textContent) + pecas[peca][elemento.dataset.estatistica]
     })
 };
+
+
+elemento_imagem.addEventListener("click", () => {
+    if (indice_imagemAtual == imgsRobos.length) {
+        indice_imagemAtual = 0
+    }
+    document.querySelector('#imgRobotron').src=imgsRobos[indice_imagemAtual]
+        indice_imagemAtual++
+});
